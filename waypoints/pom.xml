@@ -23,9 +23,12 @@
 		<Vaadin-Addon>${artifactId}-${project.version}.jar</Vaadin-Addon>
 	</properties>
 
-	<!-- <organization> <name>My Name</name> <url>https://github.com/mygithubaccount/MyComponent/</url> 
-		</organization> <scm> <url>git://github.com/mygithubaccount/MyComponent.git</url> 
-		<connection>scm:git:git://github.com/mygithubaccount/MyComponent.git</connection> 
+	<organization>
+		<name>Christian Duße</name>
+		<url>https://github.com/christiandusse/waypoints/</url>
+	</organization>
+
+	<!-- <scm> <url>git://github.com/mygithubaccount/MyComponent.git</url> <connection>scm:git:git://github.com/mygithubaccount/MyComponent.git</connection> 
 		<developerConnection>scm:git:ssh://git@github.com:/mygithubaccount/${ComponentClassName}.git</developerConnection> 
 		<tag>MyComponent add-on for Vaadin</tag> </scm> <issueManagement> <system>GitHub</system> 
 		<url>https://github.com/mygithubaccount/MyComponent/issues</url> </issueManagement> -->
@@ -33,7 +36,7 @@
 	<licenses>
 		<license>
 			<name>MIT License</name>
-			<url>../LICENSE.txt</url>
+			<url>../LICENSE</url>
 			<distribution>repo</distribution>
 		</license>
 	</licenses>
