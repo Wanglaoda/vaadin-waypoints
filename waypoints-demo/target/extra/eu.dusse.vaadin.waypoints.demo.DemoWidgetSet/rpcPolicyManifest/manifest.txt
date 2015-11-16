@@ -1,2 +1,0 @@
-# Module eu.dusse.vaadin.waypoints.demo.DemoWidgetSet
-# RPC service class, partial path of RPC policy file
