@@ -1,23 +1,25 @@
-# MyComponent Add-on for Vaadin 7
+# Waypoints Add-on for Vaadin 7
 
-MyComponent is an UI component add-on for Vaadin 7.
+This is an add-on for Vaadin 7 providing a wrapper for the JavaScript library 'Waypoints'. You can check out the original library on  
+http://imakewebthings.com/waypoints/
+With this add-on you can receive events when you scroll to a Vaadin component.
 
 ## Online demo
 
-Try the add-on demo at <url of the online demo>
+Try the add-on demo at http://env-9019740.jelastic.servint.net/waypoints-demo/ (may take a while to load)
 
 ## Download release
 
-Official releases of this add-on are available at Vaadin Directory. For Maven instructions, download and reviews, go to http://vaadin.com/addon/appear
+Official releases of this add-on are available at Vaadin Directory. For Maven instructions, download and reviews, go to http://vaadin.com/addon/waypoints
 
 ## Building and running demo
 
-git clone <url of the MyComponent repository>
+git clone https://github.com/christiandusse/vaadin-waypoints
 mvn clean install
 cd demo
 mvn jetty:run
 
-To see the demo, navigate to http://localhost:8080/
+To see the demo, navigate to http://localhost:8080/waypoints-demo/
 
 ## Development with Eclipse IDE
 
@@ -36,30 +38,48 @@ Note that Eclipse may give "Plugin execution not covered by lifecycle configurat
 
 ### Debugging server-side
 
-If you have not already compiled the widgetset, do it now by running vaadin:install Maven target for appear-root project.
+If you have not already compiled the widgetset, do it now by running vaadin:install Maven target for waypoints-root project.
 
-If you have a JRebel license, it makes on the fly code changes faster. Just add JRebel nature to your appear-demo project by clicking project with right mouse button and choosing JRebel > Add JRebel Nature
+If you have a JRebel license, it makes on the fly code changes faster. Just add JRebel nature to your waypoints-demo project by clicking project with right mouse button and choosing JRebel > Add JRebel Nature
 
-To debug project and make code modifications on the fly in the server-side, right-click the appear-demo project and choose Debug As > Debug on Server. Navigate to http://localhost:8080/appear-demo/ to see the application.
+To debug project and make code modifications on the fly in the server-side, right-click the waypoints-demo project and choose Debug As > Debug on Server. Navigate to http://localhost:8080/waypoints-demo/ to see the application.
 
 ### Debugging client-side
 
-The most common way of debugging and making changes to the client-side code is dev-mode. To create debug configuration for it, open appear-demo project properties and click "Create Development Mode Launch" button on the Vaadin tab. Right-click newly added "GWT development mode for appear-demo.launch" and choose Debug As > Debug Configurations... Open up Classpath tab for the development mode configuration and choose User Entries. Click Advanced... and select Add Folders. Choose Java and Resources under appear/src/main and click ok. Now you are ready to start debugging the client-side code by clicking debug. Click Launch Default Browser button in the GWT Development Mode in the launched application. Now you can modify and breakpoints to client-side classes and see changes by reloading the web page. 
+The most common way of debugging and making changes to the client-side code is dev-mode. To create debug configuration for it, open waypoints-demo project properties and click "Create Development Mode Launch" button on the Vaadin tab. Right-click newly added "GWT development mode for waypoints-demo.launch" and choose Debug As > Debug Configurations... Open up Classpath tab for the development mode configuration and choose User Entries. Click Advanced... and select Add Folders. Choose Java and Resources under waypoints/src/main and click ok. Now you are ready to start debugging the client-side code by clicking debug. Click Launch Default Browser button in the GWT Development Mode in the launched application. Now you can modify and breakpoints to client-side classes and see changes by reloading the web page. 
 
-Another way of debugging client-side is superdev mode. To enable it, uncomment devModeRedirectEnabled line from the end of DemoWidgetSet.gwt.xml located under appear-demo resources folder and compile the widgetset once by running vaadin:compile Maven target for appear-demo. Refresh appear-demo project resources by right clicking the project and choosing Refresh. Click "Create SuperDevMode Launch" button on the Vaadin tab of the appear-demo project properties panel to create superder mode code server launch configuration and modify the class path as instructed above. After starting the code server by running SuperDevMode launch as Java application, you can navigate to http://localhost:8080/appear-demo/?superdevmode. Now all code changes you do to your client side will get compiled as soon as you reload the web page. You can also access Java-sources and set breakpoints inside Chrome if you enable source maps from inspector settings. 
+Another way of debugging client-side is superdev mode. To enable it, uncomment devModeRedirectEnabled line from the end of DemoWidgetSet.gwt.xml located under waypoints-demo resources folder and compile the widgetset once by running vaadin:compile Maven target for waypoints-demo. Refresh waypoints-demo project resources by right clicking the project and choosing Refresh. Click "Create SuperDevMode Launch" button on the Vaadin tab of the waypoints-demo project properties panel to create superder mode code server launch configuration and modify the class path as instructed above. After starting the code server by running SuperDevMode launch as Java application, you can navigate to http://localhost:8080/waypoints-demo/?superdevmode. Now all code changes you do to your client side will get compiled as soon as you reload the web page. You can also access Java-sources and set breakpoints inside Chrome if you enable source maps from inspector settings. 
 
  
 ## Release notes
 
 ### Version 0.0.1-SNAPSHOT
-- ...
-- ...
+- Providing basic functionality for Waypoints.
+- WaypointExtension for creating a Waypoint on a Vaadin component
+- InviewExtension to create a Waypoint shortcut on a Vaadin component
+- Infinite Scroll has no extension. To provide the same functionality You can use an InviewExtension and add more elements when the InviewEvent is fired.
+- Sticky Elements (http://imakewebthings.com/waypoints/shortcuts/sticky-elements/) not supported
+- Can use the following vaadin components as context: UI, Window, Panel, Table, HorizontalSplitPanel, VerticalSplitPanel
+- Option to use custom scrollable Vaadin components as context
+
+- Known issues:
+- May lead to infinite loop when scrolling fast while having set a lot of waypoints
+- May not receive events on browser size change
+- May receive wrong events when having multiple scrollbars in the hierarchy of the extended component
+- May receive wrong events for components inside a table
+- No support for cells inside a Vaadin grid
 
 ## Roadmap
 
 This component is developed as a hobby with no public roadmap or any guarantees of upcoming releases. That said, the following features are planned for upcoming releases:
-- ...
-- ...
+- Sticky Elements: http://imakewebthings.com/waypoints/shortcuts/sticky-elements/
+- Support for cells inside a Vaadin grid
+- Events on scrolling because of browser size change
+- Settings options lazily
+- Provide more options from original library: 'group', 'continuous' http://imakewebthings.com/waypoints/api/waypoint/
+- Performance optimization (f.e. option to only receive the last event when scrolling over multiple waypoints at once)
+- Better documentation
+- Integration tests
 
 ## Issue tracking
 
@@ -77,9 +97,9 @@ Contributions are welcome, but there are no guarantees that they are accepted as
 
 ## License & Author
 
-Add-on is distributed under Apache License 2.0. For license terms, see LICENSE.txt.
+Add-on is distributed under MIT License. For license terms, see LICENSE.
 
-MyComponent is written by <...>
+This addon is written by Christian Duße
 
 # Developer Guide
 
@@ -87,24 +107,33 @@ MyComponent is written by <...>
 
 Here is a simple example on how to try out the add-on component:
 
-<...>
+```
+    AbstractComponent yourComponent = ... // the component you want to receive events for
+    AbstractComponent context = ... // Your scrollable Vaadin component that directly on indirectly contains 'yourComponent' (there may be some layout hierarchies between the context and the component). Context can be one of UI, Panel, Window, Table, HorizontalSplitPanel, VerticalSplitPanel
+    boolean horizontal = false; // is vertical scrollbar
+    InviewExtension extension = new InviewExtensionImpl(yourComponent, context, horizontal);
+    ext.addEnterListener(new EnterListener()
+    {
+        @Override
+        public void onEnter(EnterEvent event)
+        {
+            // is fired when You scroll into 'yourComponent'
+        }
+    });
+```
 
-For a more comprehensive example, see src/test/java/org/vaadin/template/demo/DemoUI.java
+For a more comprehensive example, see
+- waypoints-demo\src\main\java\eu\dusse\vaadin\waypoints\demo\DemoWaypoint.java
+- waypoints-demo\src\main\java\eu\dusse\vaadin\waypoints\demo\DemoInview.java
+- waypoints-demo\src\main\java\eu\dusse\vaadin\waypoints\demo\DemoInfiniteScroll.java
 
 ## Features
 
 ### Feature A
 
-<...>
-
-### Feature B
-
-<...>
-
-### Feature C
-
-<...>
+Receiving events when element is scrolled into viewport. 
+This can be used to load content lazily or to track user behavior.
 
 ## API
 
-MyComponent JavaDoc is available online at <...>
+Waypoints JavaDoc is available online at https://github.com/christiandusse/vaadin-waypoints
