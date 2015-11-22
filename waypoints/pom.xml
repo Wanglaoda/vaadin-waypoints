@@ -20,7 +20,7 @@
 		<Implementation-Title>${project.name}</Implementation-Title>
 		<Implementation-Vendor>${project.organization.name}</Implementation-Vendor>
 		<Vaadin-License-Title>MIT License</Vaadin-License-Title>
-		<Vaadin-Addon>${artifactId}-${project.version}.jar</Vaadin-Addon>
+		<Vaadin-Addon>${project.artifactId}-${project.version}.jar</Vaadin-Addon>
 	</properties>
 
 	<organization>

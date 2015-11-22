@@ -49,6 +49,8 @@ public class DemoUI extends UI
         VIEWS.add(new Pair<String, Class<? extends View>>("Inview", DemoInview.class));
         VIEWS.add(new Pair<String, Class<? extends View>>("Infinite scroll",
                 DemoInfiniteScroll.class));
+        VIEWS.add(new Pair<String, Class<? extends View>>("All supported contexts",
+                DemoAllSupportedContexts.class));
     }
 
     private final CheckBox enabledBox;

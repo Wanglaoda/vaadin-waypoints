@@ -23,21 +23,8 @@
  * 
  */
 
-// deprecated. that's why we override this function in the next function
-window.findScrollableOfContext = function(context, content) {
-	// if the dom of the specified context component is not scrollable,
-	// find the scrollable dom (needed for panel or window)
-	if (!($(context).hasClass("v-scrollable"))) {
-		context = $(context).find(".v-scrollable:first");
-	}
-	return context;
-}
-
-// upper implementation does not work (f.e. when ui has no scrollbars yet,
-// it won't have the class name 'v-scrollable'
-// That is why we override that function
 // If You have a custom component that contains a scrollable div,
-// You might want to override this function, too
+// You might want to override this function
 window.findScrollableOfContext = function(context, content) {
 	var classList = context.classList;
 	if (classList.contains("v-ui")) {
@@ -51,6 +38,17 @@ window.findScrollableOfContext = function(context, content) {
 		// v-window popupContent v-window-wrap v-window-contents
 		// v-scrollable
 		return context.children[0].children[0].children[2].children[0];
+	} else if (classList.contains("v-tabsheet")) {
+		// v-tabsheet v-tabsheet-content v-tabsheet-tabsheetpanel v-scrollable
+		return context.children[1].children[0].children[0];
+	} else if (classList.contains("v-accordion")) {
+		// v-accordion v-accordion-item v-accordion-item-content
+		// v-accordion has a scrollable for each of its tabs. try to find the
+		// correct scrollable for element
+		var items = $(context).children();
+		var filtered = items.has(content);
+		var item = filtered.first()[0];
+		return item.children[1]; // second child of item is scrollable
 	} else if (classList.contains("v-table")) {
 		// v-table v-scrollable (this also includes treetable)
 		return context.children[1];
@@ -58,18 +56,11 @@ window.findScrollableOfContext = function(context, content) {
 			|| classList.contains("v-splitpanel-horizontal")) {
 		// v-splitpanel-horizontal div v-scrollable
 		// splitpanel has two different scrollables. try to find the correct
-		// parent for element
-		var firstContainer = context.children[0].children[0];
-		var secondContainer = context.children[0].children[2];
-		if ($(firstContainer).has(content) != []) {
-			return firstContainer;
-		} else if ($(secondContainer).has(content) != []) {
-			return secondContainer;
-		} else {
-			console
-					.warn("content not found for referenced context: splitpanel");
-			return context;
-		}
+		// scrollable for element
+		var containers = $(context.children[0]).children();
+		var filtered = containers.has(content);
+		var container = filtered.first()[0];
+		return container;
 	} else {
 		console
 				.warn("no handler for getting scrollable of context by classlist: "

@@ -79,7 +79,7 @@
 		<dependency>
 			<groupId>eu.dusse.vaadin</groupId>
 			<artifactId>waypoints</artifactId>
-			<version>${version}</version>
+			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.vaadin</groupId>
