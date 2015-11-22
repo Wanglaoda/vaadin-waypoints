@@ -4,13 +4,46 @@ This is an add-on for Vaadin 7 providing a wrapper for the JavaScript library 'W
 http://imakewebthings.com/waypoints/
 With this add-on you can receive events when you scroll to a Vaadin component.
 
+## Features
+
+### Feature A
+
+Receiving events when element is scrolled into viewport. 
+This can be used to load content lazily or to track user behaviour.
+
+# Developer Guide
+
+## Getting started
+
+Here is a simple example on how to try out the add-on component:
+
+```
+    AbstractComponent yourComponent = ... // the component you want to receive events for
+    AbstractComponent context = ... // Your scrollable Vaadin component that directly on indirectly contains 'yourComponent' (there may be some layout hierarchies between the context and the component). Context can be one of UI, Panel, Window, Table, HorizontalSplitPanel, VerticalSplitPanel
+    boolean horizontal = false; // is vertical scrollbar
+    InviewExtension extension = new InviewExtensionImpl(yourComponent, context, horizontal);
+    ext.addEnterListener(new EnterListener()
+    {
+        @Override
+        public void onEnter(EnterEvent event)
+        {
+            // is fired when You scroll into 'yourComponent'
+        }
+    });
+```
+
+For a more comprehensive example, see
+- waypoints-demo\src\main\java\eu\dusse\vaadin\waypoints\demo\DemoWaypoint.java
+- waypoints-demo\src\main\java\eu\dusse\vaadin\waypoints\demo\DemoInview.java
+- waypoints-demo\src\main\java\eu\dusse\vaadin\waypoints\demo\DemoInfiniteScroll.java
+
 ## Online demo
 
 Try the add-on demo at http://env-9019740.jelastic.servint.net/waypoints-demo/ (may take a while to load)
 
 ## Download release
 
-Official releases of this add-on are available at Vaadin Directory. For Maven instructions, download and reviews, go to http://vaadin.com/addon/waypoints
+Official releases of this add-on are available at Vaadin Directory. For Maven instructions, download and reviews, go to https://vaadin.com/directory#!addon/waypoints-add-on
 
 ## Building and running demo
 
@@ -50,25 +83,6 @@ The most common way of debugging and making changes to the client-side code is d
 
 Another way of debugging client-side is superdev mode. To enable it, uncomment devModeRedirectEnabled line from the end of DemoWidgetSet.gwt.xml located under waypoints-demo resources folder and compile the widgetset once by running vaadin:compile Maven target for waypoints-demo. Refresh waypoints-demo project resources by right clicking the project and choosing Refresh. Click "Create SuperDevMode Launch" button on the Vaadin tab of the waypoints-demo project properties panel to create superder mode code server launch configuration and modify the class path as instructed above. After starting the code server by running SuperDevMode launch as Java application, you can navigate to http://localhost:8080/waypoints-demo/?superdevmode. Now all code changes you do to your client side will get compiled as soon as you reload the web page. You can also access Java-sources and set breakpoints inside Chrome if you enable source maps from inspector settings. 
 
- 
-## Release notes
-
-### Version 0.0.1-SNAPSHOT
-- Providing basic functionality for Waypoints.
-- WaypointExtension for creating a Waypoint on a Vaadin component
-- InviewExtension to create a Waypoint shortcut on a Vaadin component
-- Infinite Scroll has no extension. To provide the same functionality You can use an InviewExtension and add more elements when the InviewEvent is fired.
-- Sticky Elements (http://imakewebthings.com/waypoints/shortcuts/sticky-elements/) not supported
-- Can use the following vaadin components as context: UI, Window, Panel, Table, HorizontalSplitPanel, VerticalSplitPanel
-- Option to use custom scrollable Vaadin components as context
-
-- Known issues:
-- May lead to infinite loop when scrolling fast while having set a lot of waypoints
-- May not receive events on browser size change
-- May receive wrong events when having multiple scrollbars in the hierarchy of the extended component
-- May receive wrong events for components inside a table
-- No support for cells inside a Vaadin grid
-
 ## Roadmap
 
 This component is developed as a hobby with no public roadmap or any guarantees of upcoming releases. That said, the following features are planned for upcoming releases:
@@ -101,39 +115,3 @@ Add-on is distributed under MIT License. For license terms, see LICENSE.
 
 This addon is written by Christian Duße
 
-# Developer Guide
-
-## Getting started
-
-Here is a simple example on how to try out the add-on component:
-
-```
-    AbstractComponent yourComponent = ... // the component you want to receive events for
-    AbstractComponent context = ... // Your scrollable Vaadin component that directly on indirectly contains 'yourComponent' (there may be some layout hierarchies between the context and the component). Context can be one of UI, Panel, Window, Table, HorizontalSplitPanel, VerticalSplitPanel
-    boolean horizontal = false; // is vertical scrollbar
-    InviewExtension extension = new InviewExtensionImpl(yourComponent, context, horizontal);
-    ext.addEnterListener(new EnterListener()
-    {
-        @Override
-        public void onEnter(EnterEvent event)
-        {
-            // is fired when You scroll into 'yourComponent'
-        }
-    });
-```
-
-For a more comprehensive example, see
-- waypoints-demo\src\main\java\eu\dusse\vaadin\waypoints\demo\DemoWaypoint.java
-- waypoints-demo\src\main\java\eu\dusse\vaadin\waypoints\demo\DemoInview.java
-- waypoints-demo\src\main\java\eu\dusse\vaadin\waypoints\demo\DemoInfiniteScroll.java
-
-## Features
-
-### Feature A
-
-Receiving events when element is scrolled into viewport. 
-This can be used to load content lazily or to track user behavior.
-
-## API
-
-Waypoints JavaDoc is available online at https://github.com/christiandusse/vaadin-waypoints
