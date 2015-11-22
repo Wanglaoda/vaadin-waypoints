@@ -5,7 +5,7 @@
 	<groupId>eu.dusse.vaadin</groupId>
 	<artifactId>waypoints</artifactId>
 	<packaging>jar</packaging>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.1</version>
 	<name>Waypoints Add-on</name>
 
 	<properties>
