@@ -51,6 +51,7 @@ public class DemoUI extends UI
                 DemoInfiniteScroll.class));
         VIEWS.add(new Pair<String, Class<? extends View>>("All supported contexts",
                 DemoAllSupportedContexts.class));
+        VIEWS.add(new Pair<String, Class<? extends View>>("ScrollHelper", DemoScrollHelper.class));
     }
 
     private final CheckBox enabledBox;

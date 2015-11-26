@@ -8,6 +8,7 @@ import com.vaadin.ui.Button;
 import com.vaadin.ui.Notification;
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Button.ClickListener;
+import com.vaadin.ui.Notification.Type;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
 
@@ -92,7 +93,7 @@ public class DemoInfiniteScroll extends VerticalLayout implements View
 
     private void loadNextPage()
     {
-        Notification.show("Load next page");
+        Notification.show("Load next page", Type.WARNING_MESSAGE);
 
         for (int idx = 0; idx < NOF_ENTRIES; idx++)
         {

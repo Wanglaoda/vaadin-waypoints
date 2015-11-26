@@ -12,6 +12,7 @@ import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.HorizontalSplitPanel;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.Notification;
+import com.vaadin.ui.Notification.Type;
 import com.vaadin.ui.Panel;
 import com.vaadin.ui.TabSheet;
 import com.vaadin.ui.Table;
@@ -37,7 +38,7 @@ public class DemoAllSupportedContexts extends FormLayout implements View
         {
             AbstractComponent source = event.getSource(); // the extended component
             String text = "enter " + source.getCaption() + " " + event.getDirection();
-            Notification.show(text);
+            Notification.show(text, Type.WARNING_MESSAGE);
         }
     };
     private final ExitedListener defaultExitedListener = new ExitedListener()
@@ -47,7 +48,7 @@ public class DemoAllSupportedContexts extends FormLayout implements View
         {
             AbstractComponent source = event.getSource(); // the extended component
             String text = "exited " + source.getCaption() + " " + event.getDirection();
-            Notification.show(text);
+            Notification.show(text, Type.WARNING_MESSAGE);
         }
     };
 

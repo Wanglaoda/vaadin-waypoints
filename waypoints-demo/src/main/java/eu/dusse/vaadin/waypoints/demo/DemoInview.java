@@ -10,6 +10,7 @@ import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Notification;
 import com.vaadin.ui.Panel;
 import com.vaadin.ui.VerticalLayout;
+import com.vaadin.ui.Notification.Type;
 
 import eu.dusse.vaadin.waypoints.InviewExtension;
 import eu.dusse.vaadin.waypoints.InviewExtension.EnterEvent;
@@ -67,7 +68,7 @@ public class DemoInview extends VerticalLayout implements View
                 public void onEnter(EnterEvent event)
                 {
                     String text = "enter " + button.getCaption() + " " + event.getDirection();
-                    Notification.show(text);
+                    Notification.show(text, Type.WARNING_MESSAGE);
                 }
             });
 
@@ -114,7 +115,7 @@ public class DemoInview extends VerticalLayout implements View
                 public void onEntered(EnteredEvent event)
                 {
                     String text = "entered " + button.getCaption() + " " + event.getDirection();
-                    Notification.show(text);
+                    Notification.show(text, Type.WARNING_MESSAGE);
                 }
             });
 
@@ -160,7 +161,7 @@ public class DemoInview extends VerticalLayout implements View
                 public void onExit(ExitEvent event)
                 {
                     String text = "exit " + button.getCaption() + " " + event.getDirection();
-                    Notification.show(text);
+                    Notification.show(text, Type.WARNING_MESSAGE);
                 }
             });
 
@@ -207,7 +208,7 @@ public class DemoInview extends VerticalLayout implements View
                 public void onExited(ExitedEvent event)
                 {
                     String text = "exited " + button.getCaption() + " " + event.getDirection();
-                    Notification.show(text);
+                    Notification.show(text, Type.WARNING_MESSAGE);
                 }
             });
 
