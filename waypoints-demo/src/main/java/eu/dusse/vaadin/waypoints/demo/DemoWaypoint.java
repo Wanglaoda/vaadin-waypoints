@@ -15,6 +15,7 @@ import com.vaadin.ui.Table;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.Window;
+import com.vaadin.ui.Notification.Type;
 
 import eu.dusse.vaadin.waypoints.WaypointExtension;
 import eu.dusse.vaadin.waypoints.WaypointExtension.CrossedEvent;
@@ -208,7 +209,7 @@ public class DemoWaypoint extends HorizontalLayout implements View
             {
                 String text = "crossed " + button.getCaption() + " " + event.getDirection() + " at "
                         + offset;
-                Notification.show(text);
+                Notification.show(text, Type.WARNING_MESSAGE);
             }
         });
 
